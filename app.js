@@ -8,17 +8,17 @@ const saveBtn = document.getElementById("jsSave");
 const INITIAL_COLOR = "#2C2C2C";
 const CANVAS_SIZE = 700;
 
-// canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
-// canvas.height = document.getElementsByClassName("canvas")[0].offsetHeight;
+canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
+canvas.height = document.getElementsByClassName("canvas")[0].offsetHeight;
 
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
+// canvas.width = CANVAS_SIZE;
+// canvas.height = CANVAS_SIZE;
 
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.fillStyle = INITIAL_COLOR;
-ctx.linewidth = 2.5;
+ctx.lineWidth = 2.5;
 
 let painting = false;
 let filling = false;
@@ -45,6 +45,7 @@ function onMouseMove(event) {
 }
 
 function handleColorClick(event) {
+  //console.log(event); // click 정보
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
@@ -54,8 +55,10 @@ function handleColorClick(event) {
 
 function handleRangeChange(event) {
   const size = event.target.value;
-  ctx.linewidth = size;
+  ctx.lineWidth = size;
+  console.log(event);
 }
+
 function handleModeClick() {
   if (filling === true) {
     filling = false;
@@ -75,8 +78,10 @@ function handleCanvasClick() {
 function handleCM(event) {
   event.preventDefault();
 }
+
 function handleSaveClick() {
   const image = canvas.toDataURL();
+  // console.log(image);
   const link = document.createElement("a");
   link.href = image;
   link.download = "PaintJS[EXPORT]";
@@ -92,8 +97,9 @@ if (canvas) {
   canvas.addEventListener("contextmenu", handleCM);
 }
 
-Array.from(colors).forEach((color) =>
-  color.addEventListener("click", handleColorClick)
+Array.from(colors).forEach(
+  (color) => color.addEventListener("click", handleColorClick)
+  // 1~9 총 9번
 );
 
 if (range) {
