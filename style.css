@@ -59,9 +59,15 @@ body {
 .controls__colors .contorls__color {
   width: 50px;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 15px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0);
+  transition: 0.5s;
+}
+
+.colorActive {
+  transform: scale(1.3);
+  border: 2px solid rgb(200, 189 199);
 }
 
 .controls .controls__range {

@@ -1,6 +1,7 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
+const ColorArray = Array.from(colors);
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
@@ -53,6 +54,22 @@ function handleColorClick(event) {
   ctx.fillStyle = color;
   // console.log(color);
   // console.log(event.target.style);
+
+  // console.log(this);
+  this.classList.add("colorActive");
+
+  ColorArray.forEach(function (item, index) {
+    //  forEach 사용 시 두개의 파라미터가 온다. 첫번째 item, 두번째 index item 에는 배열의
+    // 요소들이 차례대로 온다. index 에는 배열의 요소의 인덱스 값이 차례로 온다
+    // console.log(index);
+    if (
+      ColorArray[index].getAttribute("style").substr(17, 7) !== ctx.strokeStyle
+    ) {
+      ColorArray[index].classList.remove("colorActive");
+      // ColorArray[index].classList.remove("colorActive");
+    }
+    console.log(ColorArray[index].getAttribute("style"));
+  });
 }
 
 function handleRangeChange(event) {
