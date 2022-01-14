@@ -14,17 +14,19 @@ body {
   background-color: white;
   border-radius: 15px;
   box-shadow: 0;
+  margin-top: 30px;
+  margin-bottom: -20px;
 }
 
 .controls {
-  margin-top: 80px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .controls .controls__btns {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .controls__btns button {
@@ -51,6 +53,9 @@ body {
 .controls .controls__colors {
   display: flex;
 }
+.jsColor {
+  margin: 0 10px;
+}
 .controls__colors .contorls__color {
   width: 50px;
   height: 50px;
@@ -60,5 +65,5 @@ body {
 }
 
 .controls .controls__range {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }

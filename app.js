@@ -4,6 +4,8 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const Eraser = document.getElementById("jsEraser");
+const Reset = document.getElementById("jsReset");
 
 const INITIAL_COLOR = "#2C2C2C";
 const CANVAS_SIZE = 700;
@@ -49,7 +51,7 @@ function handleColorClick(event) {
   const color = event.target.style.backgroundColor;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
-  console.log(color);
+  // console.log(color);
   // console.log(event.target.style);
 }
 
@@ -88,6 +90,15 @@ function handleSaveClick() {
   link.click();
 }
 
+function handleEraserClick() {
+  ctx.strokeStyle = "white";
+}
+
+function handleResetClick() {
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  range.value = 2.5;
+}
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove); // 올리기만했을때
   canvas.addEventListener("mousedown", startPainting); //눌럿을때
@@ -102,6 +113,11 @@ Array.from(colors).forEach(
   // 1~9 총 9번
 );
 
+// Array.from(colors).forEach(function(color){
+//   color.addEventListener("click", handleColorClick)
+
+// })
+
 if (range) {
   range.addEventListener("input", handleRangeChange);
 }
@@ -112,4 +128,12 @@ if (mode) {
 
 if (saveBtn) {
   saveBtn.addEventListener("click", handleSaveClick);
+}
+
+if (Eraser) {
+  Eraser.addEventListener("click", handleEraserClick);
+}
+
+if (Reset) {
+  Reset.addEventListener("click", handleResetClick);
 }
